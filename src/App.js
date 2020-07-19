@@ -15,7 +15,6 @@ class App extends React.Component {
     return (
       <main className="container">
         <Header/>
-        <Search/>
         <Results/>
       </main>
     )

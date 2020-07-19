@@ -4,17 +4,22 @@ export class Search extends Component {
     constructor() {
         super();
         this.state = {
-            
+            query: ""
         }
     }
+
+    // change this state on change of input
+    changeState(e) {
+        this.setState({
+            query: e.target.value
+        }, this.props.fetchData(this.state.query));
+    }
+
     render() {
         return (
-            <section>
-                <form className="flex">
-                    <input type="text"/>
-                    <button type="button" className="btn btn-primary">Search</button>
-                </form>
-            </section>
+            <form className="flex">
+                <input type="text" placeholder="Search for any movie..." onChange={this.changeState.bind(this)}/>
+            </form>
         )
     }
 }
