@@ -3,17 +3,33 @@ import Search from "./Search.js";
 import Item from "./Item.js";
 
 export class Results extends Component {
+    constructor() {
+        super();
+        this.state = {
+            query: ""
+        }
+    }
 
-    // fetch data from api
-    fetchData(value) {
-        console.log(value);
+    // handle event when form is submitted
+    handleSubmit(e) {
+        e.preventDefault();
+
+        console.log(this.state.query)
+    }
+
+    // handle input change
+    inputChange(e) {
+        let input = e.target.value;
+        this.setState({
+            query: input
+        });
     }
 
     render() {
         return (
             <section className="w-100">
-                <Search fetchData={this.fetchData.bind(this)}/>
-                <Item/>
+                <Search handleSubmit={this.handleSubmit.bind(this)} inputChange={this.inputChange.bind(this)}/>
+                <Item data={this.state.query}/>
             </section>
         )
     }

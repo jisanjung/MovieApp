@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from "./components/Header.js";
-import Search from "./components/Search.js";
 import Results from "./components/Results.js";
 
 class App extends React.Component {

@@ -4,7 +4,7 @@ export class Item extends Component {
     render() {
         return (
             <div>
-                an item
+               <h1>{this.props.data}</h1>
             </div>
         )
     }
