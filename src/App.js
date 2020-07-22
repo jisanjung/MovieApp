@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from "./components/Header.js";
 import Results from "./components/Results.js";
+import "./sass/main.scss";
 
 class App extends React.Component {
   constructor() {

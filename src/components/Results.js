@@ -18,7 +18,6 @@ export class Results extends Component {
 
         axios.get(`https://api.themoviedb.org/3/search/movie/?api_key=b2768da444ca6ca13d3a6180597e85f0&query=${this.state.query}`)
             .then(res => {
-                console.log(res);
                 this.setState({
                     movies: [...res.data.results]
                 }, () => {
@@ -39,7 +38,9 @@ export class Results extends Component {
         return (
             <section className="w-100">
                 <Search handleSubmit={this.handleSubmit.bind(this)} inputChange={this.inputChange.bind(this)}/>
-                <Item data={this.state.query}/>
+                <div className="flex flex-wrap">
+                    {this.state.movies.map((movie, i) => <Item key={i} movie={movie}/>)}
+                </div>
             </section>
         )
     }
