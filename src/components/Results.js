@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import Search from "./Search.js";
 import Item from "./Item.js";
+import axios from "axios";
 
 export class Results extends Component {
     constructor() {
         super();
         this.state = {
-            query: ""
+            query: "",
+            movies: []
         }
     }
 
@@ -14,7 +16,15 @@ export class Results extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        console.log(this.state.query)
+        axios.get(`https://api.themoviedb.org/3/search/movie/?api_key=b2768da444ca6ca13d3a6180597e85f0&query=${this.state.query}`)
+            .then(res => {
+                console.log(res);
+                this.setState({
+                    movies: [...res.data.results]
+                }, () => {
+                    console.log(this.state.movies)
+                });
+            });
     }
 
     // handle input change
