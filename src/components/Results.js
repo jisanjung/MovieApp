@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Search from "./Search.js";
 import Item from "./Item.js";
 import Details from "./Details.js";
+import Error from "./Error.js";
 import axios from "axios";
 
 export class Results extends Component {
@@ -10,7 +11,8 @@ export class Results extends Component {
         this.state = {
             query: "",
             movies: [],
-            details: []
+            details: [],
+            error: ""
         }
     }
 
@@ -22,8 +24,13 @@ export class Results extends Component {
             .then(res => {
                 this.setState({
                     movies: [...res.data.results]
+                });
+            })
+            .catch(error => {
+                this.setState({
+                    error: error.message
                 }, () => {
-                    console.log(this.state.movies)
+                    console.log(this.state.error)
                 });
             });
     }
@@ -56,7 +63,8 @@ export class Results extends Component {
                 <Search handleSubmit={this.handleSubmit.bind(this)} inputChange={this.inputChange.bind(this)}/>
 
                 <Details details={this.state.details}/>
-                
+                <Error error={this.state.error}/>
+
                 <div className="flex flex-wrap">
                     {this.state.movies.map((movie) => <Item key={movie.id} movie={movie} setDetails={this.setDetails.bind(this, movie.id)}/>)}
                 </div>
