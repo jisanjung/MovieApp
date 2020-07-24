@@ -13,9 +13,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <main className="container">
-        <Header/>
-        <Results/>
+      <main className="text-white bg-dark">
+        <div className="container">
+          <Header/>
+          <Results/>
+        </div>
       </main>
     )
   }

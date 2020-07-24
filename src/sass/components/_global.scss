@@ -4,8 +4,11 @@
     padding: 0;
     box-sizing: border-box;
 }
-html, body {
-    overflow-x: hidden;
+html {
+    overflow: auto;
+}
+body {
+    overflow: hidden;
 }
 li {
     list-style: none;
@@ -23,6 +26,9 @@ a {
 }
 .flex-center {
     justify-content: center;
+}
+.flex-around {
+    justify-content: space-around;
 }
 .flex-wrap {
     flex-wrap: wrap;

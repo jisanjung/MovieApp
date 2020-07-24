@@ -65,7 +65,7 @@ export class Results extends Component {
                 <Details details={this.state.details}/>
                 <Error error={this.state.error}/>
 
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap flex-center pb-5">
                     {this.state.movies.map((movie) => <Item key={movie.id} movie={movie} setDetails={this.setDetails.bind(this, movie.id)}/>)}
                 </div>
             </section>
