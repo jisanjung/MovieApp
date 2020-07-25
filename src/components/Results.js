@@ -68,11 +68,18 @@ export class Results extends Component {
         });
     }
 
+    // close movie details
+    closeDetails() {
+        this.setState({
+            showDetails: false
+        });
+    }
+
     // more details when single movie (Item component) is clicked
     setDetails(id) {
 
         this.setState({
-            showDetails: !this.state.showDetails
+            showDetails: true
         }, () => {
             console.log(this.state.showDetails);
         });
@@ -94,7 +101,7 @@ export class Results extends Component {
             <section className="w-100">
                 <Search handleSubmit={this.handleSubmit.bind(this)} inputChange={this.inputChange.bind(this)}/>
 
-                <Details details={this.state.details} activate={this.state.showDetails}/>
+                <Details details={this.state.details} activate={this.state.showDetails} close={this.closeDetails.bind(this)}/>
                 <Error error={this.state.error}/>
 
                 <div className="flex flex-wrap flex-center pb-5">
