@@ -1,9 +1,14 @@
 import React from 'react';
 
 export default function Details(props) {
+
     return (
-        <ul>
-            {props.details.map((info, i) => <li key={i}>{info}</li>)}
+        <ul style={{ display: (props.activate) ? "block" : "none" }}>
+            <div className="position-absolute detail container">
+                <h5 className="title">{props.details[0]}</h5>
+                <p className="release">{props.details[2]}</p>
+                <p className="plot">{props.details[3]}</p>
+            </div>
         </ul>
     )
 }

@@ -13,7 +13,8 @@ export class Results extends Component {
             endpoint: "https://api.themoviedb.org/3/trending/all/day?api_key=b2768da444ca6ca13d3a6180597e85f0",
             movies: [],
             details: [],
-            error: ""
+            error: "",
+            showDetails: false
         }
     }
 
@@ -69,6 +70,13 @@ export class Results extends Component {
 
     // more details when single movie (Item component) is clicked
     setDetails(id) {
+
+        this.setState({
+            showDetails: !this.state.showDetails
+        }, () => {
+            console.log(this.state.showDetails);
+        });
+
         let target = this.state.movies.filter((movie, i) => {
             return id === movie.id
         });
@@ -86,7 +94,7 @@ export class Results extends Component {
             <section className="w-100">
                 <Search handleSubmit={this.handleSubmit.bind(this)} inputChange={this.inputChange.bind(this)}/>
 
-                <Details details={this.state.details}/>
+                <Details details={this.state.details} activate={this.state.showDetails}/>
                 <Error error={this.state.error}/>
 
                 <div className="flex flex-wrap flex-center pb-5">
