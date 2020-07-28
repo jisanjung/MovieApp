@@ -103,7 +103,7 @@ export class Results extends Component {
         return (
             <section className="w-100">
                 <Search handleSubmit={this.handleSubmit.bind(this)} inputChange={this.inputChange.bind(this)}/>
-            
+
                 <Details details={this.state.details} activate={this.state.showDetails} close={this.closeDetails.bind(this)}/>
                 <Error error={this.state.error}/>
 
