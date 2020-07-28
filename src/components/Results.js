@@ -18,7 +18,7 @@ export class Results extends Component {
         }
     }
 
-    // trending movies
+    // show trending movies "on load" or when component loads
     componentDidMount() {
         axios.get(this.state.endpoint)
             .then(res => {
@@ -39,6 +39,7 @@ export class Results extends Component {
     handleSubmit(e) {
         e.preventDefault();
 
+        // endpoint based on user's input
         let newEndpoint = `https://api.themoviedb.org/3/search/movie/?api_key=b2768da444ca6ca13d3a6180597e85f0&query=${this.state.query}`;
 
         this.setState({
@@ -78,12 +79,14 @@ export class Results extends Component {
     // more details when single movie (Item component) is clicked
     setDetails(id) {
 
+        // show Details component
         this.setState({
             showDetails: true
         }, () => {
             console.log(this.state.showDetails);
         });
 
+        // return the clicked movie based on id
         let target = this.state.movies.filter((movie, i) => {
             return id === movie.id
         });
@@ -100,7 +103,7 @@ export class Results extends Component {
         return (
             <section className="w-100">
                 <Search handleSubmit={this.handleSubmit.bind(this)} inputChange={this.inputChange.bind(this)}/>
-
+            
                 <Details details={this.state.details} activate={this.state.showDetails} close={this.closeDetails.bind(this)}/>
                 <Error error={this.state.error}/>
 
